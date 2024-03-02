@@ -1,47 +1,42 @@
 # Use the latest version of the Amazon Linux base image
 FROM amazonlinux:2
 
-# Update all installed packages to their latest versions
-RUN yum update -y
+# Update all installed packages to thier latest versions
+RUN yum update -y 
 
-# Install the unzip package, which we will use to extract the web files from the zip folder
+# Install the unzip package, which we will use it to extract the web files from the zip folder
 RUN yum install unzip -y
 
-# Install wget package, which we will use to download files from the internet
+# Install wget package, which we will use it to download files from the internet 
 RUN yum install -y wget
 
-# Install Apache and PHP with extensions
-RUN amazon-linux-extras enable php8.0 && \
-    yum clean metadata && \
-    yum install -y \
-        httpd \
-        php \
-        php-fpm \
-        php-mysqli \
-        php-json \
-        php-curl \
-        php-bcmath \
-        php-ctype \
-        php-fileinfo \
-        php-mbstring \
-        php-openssl \
-        php-pdo \
-        php-gd \
-        php-tokenizer \
-        php-xml \
-        php-curl && \
-    yum clean all
+# Install Apache
+RUN yum install -y httpd
 
-# Update the settings, memory_limit to 128M and max_execution_time to 300 in the php.ini
-RUN sed -i 's/^\s*;\?\s*memory_limit=.*/memory_limit = 128M/' /etc/php.ini
-
-RUN sed -i 's/^\s*;\?\s*max_execution_time =.*/max_execution_time = 300/' /etc/php.ini
+# Install PHP and various extensions
+RUN amazon-linux-extras enable php7.4 && \
+  yum clean metadata && \
+  yum install -y \
+    php \
+    php-common \
+    php-pear \
+    php-cgi \
+    php-curl \
+    php-mbstring \
+    php-gd \
+    php-mysqlnd \
+    php-gettext \
+    php-json \
+    php-xml \
+    php-fpm \
+    php-intl \
+    php-zip
 
 # Download the MySQL repository package
 RUN wget https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
 
 # Import the GPG key for the MySQL repository
-RUN rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+RUN rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
 
 # Install the MySQL repository package
 RUN yum localinstall mysql80-community-release-el7-3.noarch.rpm -y
@@ -59,8 +54,8 @@ RUN yum install -y git
 ARG PERSONAL_ACCESS_TOKEN
 ARG GITHUB_USERNAME
 ARG REPOSITORY_NAME
-# ARG WEB_FILE_ZIP
-# ARG WEB_FILE_UNZIP
+ARG WEB_FILE_ZIP
+ARG WEB_FILE_UNZIP
 ARG DOMAIN_NAME
 ARG RDS_ENDPOINT
 ARG RDS_DB_NAME
@@ -71,8 +66,8 @@ ARG RDS_DB_PASSWORD
 ENV PERSONAL_ACCESS_TOKEN=$PERSONAL_ACCESS_TOKEN
 ENV GITHUB_USERNAME=$GITHUB_USERNAME
 ENV REPOSITORY_NAME=$REPOSITORY_NAME
-# ENV WEB_FILE_ZIP=$WEB_FILE_ZIP
-# ENV WEB_FILE_UNZIP=$WEB_FILE_UNZIP
+ENV WEB_FILE_ZIP=$WEB_FILE_ZIP
+ENV WEB_FILE_UNZIP=$WEB_FILE_UNZIP
 ENV DOMAIN_NAME=$DOMAIN_NAME
 ENV RDS_ENDPOINT=$RDS_ENDPOINT
 ENV RDS_DB_NAME=$RDS_DB_NAME
@@ -83,10 +78,10 @@ ENV RDS_DB_PASSWORD=$RDS_DB_PASSWORD
 RUN git clone https://$PERSONAL_ACCESS_TOKEN@github.com/$GITHUB_USERNAME/$REPOSITORY_NAME.git
 
 # Unzip the zip folder containing the web files
-#RUN unzip $REPOSITORY_NAME/$WEB_FILE_ZIP -d $REPOSITORY_NAME/
+RUN unzip $REPOSITORY_NAME/$WEB_FILE_ZIP -d $REPOSITORY_NAME/
 
 # Copy the web files into the HTML directory
-RUN cp -av $REPOSITORY_NAME/$*. /var/www/html
+RUN cp -av $REPOSITORY_NAME/$WEB_FILE_UNZIP/. /var/www/html
 
 # Remove the repository we cloned
 RUN rm -rf $REPOSITORY_NAME
