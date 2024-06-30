@@ -1,4 +1,4 @@
-# Use the latest version of the Amazon Linux base image
+# Use the latest version of the Amazon Linux base images
 FROM amazonlinux:2
 
 # Update all installed packages to thier latest versions
