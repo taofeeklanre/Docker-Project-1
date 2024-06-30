@@ -1,9 +1,10 @@
 # Use the latest version of the Amazon Linux base images
 FROM amazonlinux:2
 
+RUN yum clean all && yum makecache && yum update -y
+
 # Update all installed packages to thier latest versions
 RUN yum update -y 
-
 # Install the unzip package, which we will use it to extract the web files from the zip folder
 RUN yum install unzip -y
 
