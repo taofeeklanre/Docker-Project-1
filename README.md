@@ -71,72 +71,75 @@ Before you begin, ensure you have the following:
 8. Launch a MySQL database instance using Amazon RDS.
 
 9. Create EC2 Instance Connect Endpoint
+## Architecture Reference Diagram
+![Project Endpoint]
+
 
 10. Configure EC2 instance connectivity.
 
-11. Register a New Domain Name in Route 53
+12. Register a New Domain Name in Route 53
 
-12. Use Amazon Route 53 to register and manage your domain.
+13. Use Amazon Route 53 to register and manage your domain.
 
-13. Create Repository to Store the Application Codes
+14. Create Repository to Store the Application Codes
 
-14. Initialize a Git repository for your application code.
+15. Initialize a Git repository for your application code.
 
-15. Add the Application Code to the GitHub Repository
+16. Add the Application Code to the GitHub Repository
 
-16. Push your application code to GitHub.
+17. Push your application code to GitHub.
 
-17. Create a Repository to Store the Dockerfile
+18. Create a Repository to Store the Dockerfile
 
-18. Set up a separate repository for Docker configuration.
+19. Set up a separate repository for Docker configuration.
 
-19. Create a Personal Access Token
+20. Create a Personal Access Token
 
-20. Generate a GitHub personal access token for authentication.
+21. Generate a GitHub personal access token for authentication.
 
-21. Create a Dockerfile for the Project
+22. Create a Dockerfile for the Project
 
-22. Write a Dockerfile to define your application's Docker image.
+23. Write a Dockerfile to define your application's Docker image.
 
-23. Add Build Arguments and Environment Variables to the Dockerfile
+24. Add Build Arguments and Environment Variables to the Dockerfile
 
-24. Configure build arguments and environment variables for flexibility.
+25. Configure build arguments and environment variables for flexibility.
 
-25. Create a Script to Build the Docker Image
+26. Create a Script to Build the Docker Image
 
-26. Develop a build script to automate Docker image creation.
+27. Develop a build script to automate Docker image creation.
 
-27. Make the Script Executable
+28. Make the Script Executable
 
-28. Modify script permissions to make it executable.
+29. Modify script permissions to make it executable.
 
-29. Build the Docker Image
+30. Build the Docker Image
 
-30. Execute the build script to create your Docker image.
+31. Execute the build script to create your Docker image.
 
-31. Install the AWS Command Line CLI
+32. Install the AWS Command Line CLI
 
-32. Install the AWS CLI for AWS operations.
+33. Install the AWS CLI for AWS operations.
 
-33. Create an IAM User with Programmatic Access
+34. Create an IAM User with Programmatic Access
 
-34. Set up an IAM user with necessary permissions for AWS services.
+35. Set up an IAM user with necessary permissions for AWS services.
 
-35. Run the AWS Configure Command
+36. Run the AWS Configure Command
 
-36. Configure AWS CLI with your IAM credentials using aws configure.
+37. Configure AWS CLI with your IAM credentials using aws configure.
 
-37. Create a Repository in Amazon ECR with AWS CLI
+38. Create a Repository in Amazon ECR with AWS CLI
 
-38. Use AWS CLI to create an ECR repository for storing Docker images.
+39. Use AWS CLI to create an ECR repository for storing Docker images.
 
-39. Push the Docker Image to the Amazon ECR Repository
+40. Push the Docker Image to the Amazon ECR Repository
 
-40. Authenticate Docker to ECR and push your image.
+41. Authenticate Docker to ECR and push your image.
 
-41. Migrate Database File (Rentzone MySQL)
+42. Migrate Database File (Rentzone MySQL)
 
-42. Import your MySQL database into the RDS instance.
+43. Import your MySQL database into the RDS instance.
 
 ### Part 3: Create Application Load Balancer, ACM, ECS, Record Set in Route 53, and Others
 1. Creating an Application Load Balancer
