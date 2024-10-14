@@ -1,9 +1,10 @@
 ## Project-4: Host a Dynamic Website on AWS Platform with Docker, ECR, and ECS
 Welcome to this project, where we dive into the world of containerization and orchestration on AWS. This project guides you through leveraging Docker, Amazon Elastic Container Registry (ECR), and Amazon Elastic Container Service (ECS) to host a dynamic website. By containerizing your application and deploying it on ECS, you'll achieve scalability, reliability, and ease of management. Join us on this journey to unlock the power of containerized deployments on AWS!
-
+## Architecture Reference Diagram For The Project
+![Project Endpoint](https://github.com/taofeeklanre/Docker-Project-1/blob/main/How_to_Host_a_Dynamic_Web_App_on_AWS_with_Docker_Amazon_ECR_and_Amazon_ECS.jpg?raw=true)
 ## Project Structure
 
-Part 1: Pre-requisites / Requirements
+Part 1: Pre-requisites 
 
 Part 2: Create Project Infrastructure in AWS, Docker, Dockerfile, Docker Image, and Others
 
@@ -63,17 +64,19 @@ Before you begin, ensure you have the following:
 4. Configure NAT Gateways for internet access in private subnets.
 
 5. Create Security Groups in AWS
+## Architecture Reference Diagram For Security Group
+![Project Endpoint](https://github.com/taofeeklanre/Docker-Project-1/blob/main/SECURITY%20GROUP%20ARCHITECTURE.jpg?raw=true)
+   
 
-6. Define security groups to control inbound and outbound traffic.
+7. Define security groups to control inbound and outbound traffic.
 
-7. Set Up MySQL RDS Instance in AWS
+8. Set Up MySQL RDS Instance in AWS
 
-8. Launch a MySQL database instance using Amazon RDS.
+9. Launch a MySQL database instance using Amazon RDS.
 
-9. Create EC2 Instance Connect Endpoint
-## Architecture Reference Diagram
-![Project Endpoint]
-
+10. Create EC2 Instance Connect Endpoint
+## Architecture Reference Diagram For EC2 Instance Connect Endpoint
+![Project Endpoint](https://github.com/taofeeklanre/Docker-Project-1/blob/main/ec2%20Instance%20connect%20Reference%20Architecture.JPG?raw=true)
 
 10. Configure EC2 instance connectivity.
 
@@ -110,11 +113,14 @@ Before you begin, ensure you have the following:
 27. Develop a build script to automate Docker image creation.
 
 28. Make the Script Executable
+# make shell script executable in powershell: (Used powershell-Run Administrator)
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 
 29. Modify script permissions to make it executable.
 
 30. Build the Docker Image
-
+# To build image using script use this command
+.\build_image.ps1
 31. Execute the build script to create your Docker image.
 
 32. Install the AWS Command Line CLI
@@ -130,14 +136,38 @@ Before you begin, ensure you have the following:
 37. Configure AWS CLI with your IAM credentials using aws configure.
 
 38. Create a Repository in Amazon ECR with AWS CLI
+    
+# aws cli command to create an amazon ecr repository
+aws ecr create-repository --repository-name <repository-name> --region <region>
+aws ecr create-repository --repository-name nest --region us-east-1
+
+# retag docker image 
+docker tag <image-tag> <repository-uri>
+
+# login to ecr
+aws ecr get-login-password | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
 
 39. Use AWS CLI to create an ECR repository for storing Docker images.
 
 40. Push the Docker Image to the Amazon ECR Repository
+# push docker image to ecr repository use this command
+docker push <repository-uri>
 
 41. Authenticate Docker to ECR and push your image.
 
 42. Migrate Database File (Rentzone MySQL)
+## to Migrate data script to our rds database
+flyway.url=jdbc:mysql://localhost:3306/<input ur db name>
+
+flyway.user=
+
+flyway.password=
+
+flyway.locations=filesystem:sql
+
+flyway.cleanDisabled=false
+
+flyway.validateMigrationNaming=true
 
 43. Import your MySQL database into the RDS instance.
 
