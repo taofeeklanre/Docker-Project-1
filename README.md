@@ -212,17 +212,20 @@ flyway.validateMigrationNaming=true
 
 20. Configure DNS settings to route traffic to your load balancer.
 
-## Cleaning Up Your ECS Project
-
-Remove resources to avoid unnecessary charges.
+## To access your website:
 After completing the setup and deployment steps, your dynamic website will be accessible via the domain you registered. The website is hosted on AWS using Docker containers managed by ECS, ensuring scalability and reliability.
 
-To access your website:
+1. Open your web browser.
 
-Open your web browser.
-Navigate to your registered domain name (e.g., www.yourdomain.com).
-Verify that the website is loading correctly and functions as expected.
+2. Navigate to your registered domain name (e.g., www.zabinets.com) in my own case.
+   
+3. Verify that the website is loading correctly and functions as expected.
+## Displayed the website that was deployed
+![Project Endpoint](https://github.com/taofeeklanre/Docker-Project-1/blob/main/website-1.jpg?raw=true)
+![Project Endpoint](https://github.com/taofeeklanre/Docker-Project-1/blob/main/website-2.jpg?raw=true)
+![Project Endpoint](https://github.com/taofeeklanre/Docker-Project-1/blob/main/website-3.jpg?raw=true)
 
+## Cleaning Up Your ECS Project
 Cleanup
 To avoid incurring charges for the AWS resources used in this project, follow these cleanup steps:
 
@@ -259,13 +262,16 @@ Create a new branch (git checkout -b feature/YourFeature).
 Commit your changes (git commit -m 'Add some feature').
 Push to the branch (git push origin feature/YourFeature).
 Open a pull request.
-License
-This project is licensed under the MIT License.
 
 Contact
 For any questions or inquiries, please contact:
 
-Your Name
-Email: your.email@example.com
-GitHub: your-github-username
+Taofeek Agboola
+
+Email: taolanre99@gmail.com
+
+GitHub: [My-Github-username](https://github.com/taofeeklanre)
+
+LinkedIn:[My-LindkedIn-User]( inkedin.com/in/taofeek-agboola)
+
 Happy deploying! 🚀
