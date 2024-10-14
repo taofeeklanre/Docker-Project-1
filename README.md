@@ -263,7 +263,7 @@ Commit your changes (git commit -m 'Add some feature').
 Push to the branch (git push origin feature/YourFeature).
 Open a pull request.
 
-Contact
+### Contact
 For any questions or inquiries, please contact:
 
 Taofeek Agboola
